@@ -1,0 +1,330 @@
+/* 레이아웃 */
+#header {
+  width: 100%;
+  height: 63px;
+  background: rgba(0, 0, 0);
+  border-bottom: 1px solid red;
+}
+
+/* 가운데 영역 */
+.container {
+  position: relative;
+  width: 1280px;
+  /* block 구조 가운데정렬 */
+  margin: 0 auto;
+  /* background: rgba(0, 0, 0, 1); */
+}
+
+/* 로우 영역 = 컨테이너에서 한번 더 양옆 더 들어가게*/
+.row {
+  padding: 0 28px;
+}
+
+.movie {
+  padding: 100px 0;
+}
+
+/* 모바일메뉴 */
+
+/* float 줘버려서 container 높이값+배경 사라짐 */
+/* float 을 쓰면 = 상위 박스의 height 값이 0 으로 설정 =영역 사라짐*/
+/* 4가지 방법 */
+/* 1_똑같이 float을 사용한다 (비추)
+         깨지는 영역에 똑같이 float을 쓰면 해결되지만
+         계속적으로 float을 써야 하는 문제점이 생김*/
+/* 2_clear:both; 를 사용한다 (비추)
+         레이아웃이 복잡해지면 어디가 깨지는지
+         구별할 수 없어 사용하기 애매하다 */
+/* 3_상위박스한테 overflow:hidden 을 사용 (추천)
+        overflow 의 원래 기능을 벗어나지만 이걸 쓰면
+        하이트 값을 인식함. 
+        header 에 overflow:hidden 줬다쳐도,
+        근데, 단점이, nav 밑에 또 nav이 있다면 밑에 nav 안보임
+        */
+/* 4_clearfix 를 만들어 사용 (최선)
+        가상으로 영역을 만들어 하이트 값을 인식하도록
+        만드는 방법. 현재로선 최선.  */
+/* .clearfix:before, .clearfix:after{
+            display:block;
+            content:'';
+            line-height: 0;
+        } ★<- 가상으로 영역 만드는거임
+            .clearfix:after{
+                clear:both;
+            }
+            .clearfix{
+                *zoom:1;
+            }
+        */
+/* 
+        :before, :after
+        가상으로 요소에 컨텐츠를 넣을 수 있는 속성입니다
+        clear:both
+        float의 성질을 양쪽에서 차단하는 역할을 합니다
+        *zoom:1;
+        현재는 사용하지 않지만 익스7 버전에 영역을 잡기 위한
+        핵의 일종입니다. 지금은 몰라도 됩니다. 죽은 소스 입니다.
+        */
+
+/* _____________________________미디어 쿼리 */
+
+@media (max-width: 1290px) {
+  .container {
+    width: 100%;
+  }
+  .header .nav ul li {
+    width: 93px;
+  }
+  .header .nav ul li a {
+    font-size: 14px;
+  }
+  .slider .swiper-slide h2 {
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* 시작_햄버거 메뉴 */
+  #mNav {
+    display: block;
+  }
+  .nav {
+    display: none;
+  }
+  /* 끝_햄버거 메뉴 */
+  .row {
+    padding: 0 24px;
+  }
+  .header h1 {
+    float: none;
+    text-align: center;
+  }
+  .header h1 strong {
+    left: 24px;
+  }
+  /* 시작_배너메뉴 */
+  .banner_menu .bm_left ul {
+    display: none;
+  }
+  .banner_menu .bm_right ul:first-child {
+    display: none;
+  }
+  .slider .swiper-slide p {
+    /* display: inline-block;
+    margin: 0 auto; */
+    display: none;
+  }
+  .slider .swiper-slide h2::after {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .slider {
+    height: 500px;
+  }
+  .slider .swiper-slide h2 {
+    margin-top: 160px;
+    font-size: 37px;
+    /* line-height: 15; */
+  }
+  .movie_title ul {
+    width: auto;
+  }
+  /* auto 으로 width 값 풀어주기 */
+  .movie_title ul li {
+    width: 25%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background: #d9d7e0;
+  }
+
+  .row {
+    padding: 0 16px;
+  }
+
+  #mNav {
+    right: 6px;
+  }
+
+  .header h1 {
+    text-align: left;
+  }
+
+  .header h1 strong {
+    display: none;
+  }
+
+  #movie .row {
+    background: white;
+    margin: 24px;
+    padding: 24px;
+  }
+
+  #movie .ir_so {
+    position: static;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    text-indent: 0;
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 20px;
+  }
+
+  .movie {
+    padding: 0;
+  }
+
+  .movie_title {
+  }
+
+  .movie_title ul {
+  }
+
+  .movie_title ul::before {
+  }
+  /* 가상공간으로 라인 만들어줌, border로 하면 충돌 날까봐 */
+
+  .movie_title li {
+    width: auto;
+    border: 0;
+  }
+
+  .movie_title li a {
+    font-size: 18px;
+    color: #666;
+  }
+
+  .movie_title li.active a {
+    background: none;
+    color: #666;
+  }
+}
+
+@media (max-width: 600px) {
+  .slider {
+    height: 400px;
+    /* background: url(assets/img/swiper01.jpg) no-repeat center center;
+    background-size: cover;
+    width: 100%; */
+  }
+  .slider .swiper-slide h2 {
+    margin-top: 140px;
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .slider .swiper-slide h2:after {
+    bottom: -5px;
+  }
+  .slider .swiper-slide h2 em {
+    font-size: 20px;
+  }
+  .slider .swiper-slide p {
+    font-size: 14px;
+    padding-top: 25px;
+  }
+
+  .slider .swiper-slide p {
+    /* display: inline-block;
+    margin: 0 auto; */
+    display: block;
+  }
+  .slider .swiper-slide h2::after {
+    display: block;
+  }
+
+  .banner_menu {
+    top: 16px;
+  }
+  .banner_menu .bm_right li.white a {
+    font-size: 14px;
+    padding: 3px 5px 5px 5px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    border-color: #fff;
+  }
+  .banner_menu .bm_right li.purple a {
+    font-size: 14px;
+    padding: 3px 5px 5px 5px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    border-color: #fff;
+  }
+  .swiper-pagination-bullet {
+    width: 13px !important;
+    height: 13px !important;
+  }
+  /* //swiper */
+
+  #movie .container {
+  }
+
+  #movie .container::after {
+    content: "";
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+    background: #d9d7e0;
+  }
+
+  #movie .row {
+    margin: 8px;
+    padding: 16px;
+    /* ㄴ600이였을때 슬라이더 이미지가 밖으로 나가게
+        지금은 패딩땜에 안에 반듯하게 갇혀 있어
+        ㄱ밑에처럼 저래 0 으로 지정해줘야 함 */
+    margin-right: 0;
+    padding-right: 0;
+    /* ㄴ근데 이래하면 
+    body:background 회색 부분이 
+    화면 깨지니까
+    #movie .container::after 에다가
+        가상요소로 라인 만들어줘야 함 */
+    position: relative;
+    /* ㄴ::after 가상요소 위치 잡아주려면
+        뤨러티브 지정해 줘야 함 */
+  }
+  #movie .row::after {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 100%;
+    background: white;
+  }
+
+  .movie_chart {
+    position: relative;
+    z-index: 30;
+    /* z-index: 하려면 포지션으로 영역이 잡혀있어야함; */
+  }
+  /* //무비차트 */
+
+  .movie_title ul {
+    padding-bottom: 8px;
+    white-space: nowrap;
+    overflow-x: auto;
+    /* ㄴ 화면 320 됐을때
+          글자 2줄 되는거 방지해줌 */
+  }
+}
+
+@media (max-width: 480px) {
+}
+@media (max-width: 320px) {
+  .movie_title li a {
+    margin-right: 9px;
+    /* ㄴ 화면 320 됐을때
+          글자 2줄 되는거 방지해줌 */
+  }
+}

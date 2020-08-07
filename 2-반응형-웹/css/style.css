@@ -1,0 +1,517 @@
+/* 레이아웃 */
+body {
+  background: url(../img/header_bg.jpg) repeat-x center top;
+}
+/* #header {
+  background: url(../img/header_bg.jpg) repeat-x center top;
+} */
+#nav {
+  background-color: tomato;
+}
+#contents .container {
+  border-right: 1px solid blue;
+  border-left: 1px solid blue;
+}
+#cont_left {
+  float: left;
+  width: 250px;
+  /* height: 100%; */
+  background-color: thistle;
+  height: 100vh;
+  /* margin-top: 10px; */
+  /* 오/왼 margin-top:10px 씩 주면 
+    센터가 오/왼 영역을 침범하는게 보임
+    이때 센터 margin-right:250px로 쭐여주고
+    왼쪽은 float 이니까 overflow:hidden 해서
+    영역 침범 막아주면, 해결 됨 */
+}
+#cont_center {
+  background-color: #257fac;
+  height: 100vh;
+  margin-right: 250px;
+  /* overflow: hidden; */
+  border-right: 1px solid blue;
+  border-left: 1px solid blue;
+}
+#cont_right {
+  /* margin-top: 10px; */
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #ccc;
+}
+#footer {
+}
+
+/* 컨테이너 */
+.container {
+  position: relative;
+  width: 1200px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* 헤더 */
+.header {
+  height: 327px;
+}
+
+.header .header_menu {
+  text-align: right;
+}
+
+.header .header_menu a {
+  color: #fff;
+  padding: 8px 0 6px 10px;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+.header .header_menu a:hover {
+  color: #ccc;
+}
+
+.header .header_tit {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 55px;
+}
+
+.header .header_tit h1 {
+  font-size: 30px;
+  color: #fff;
+  background-color: blue;
+  display: inline-block;
+  padding: 5px 30px 5px 30px;
+  letter-spacing: 2px;
+  font-weight: 900;
+  transition: box-shadow 0.25s ease-in-out;
+}
+
+.header .header_tit h1:hover {
+  box-shadow: inset -9em 0 0 0 #257fac, inset 9em 0 0 0 #257fac;
+}
+
+.header .header_tit a {
+  font-size: 16px;
+  color: brown;
+  background: cadetblue;
+  display: inline-block;
+  padding: 10px 20px 10px 20px;
+  margin-top: 10px;
+  transition: box-shadow 0.25s ease-in-out;
+  /* ㄴ마우스 올렸을때 부드러운 효과 주고프면  */
+}
+
+.header .header_tit a:hover {
+  box-shadow: 0 0 0 5px rgba(75, 154, 191, 0.9) inset,
+    0 0 0 100px rgba(0, 0, 0, 0.1) inset;
+}
+
+.header .header_icon {
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 45px;
+}
+
+.header .header_icon li {
+  display: inline;
+  margin: 0 2px;
+}
+
+.header .header_icon li a {
+  background-color: rgba(75, 154, 191, 0.9);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  /* ㄴa는 inline 구조니까 위드/하잇 값 안먹혀 */
+  /* ㄴ그래서 블럭 구조로 바꿔주고 */
+  display: inline-block;
+  font-size: 35px;
+  line-height: 60px;
+  position: relative;
+}
+
+.header .header_icon li a span {
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  transform: translateX(-50%);
+  font-size: 12px;
+  line-height: 1.6;
+  background-color: salmon;
+  padding: 3px 9px;
+  border-radius: 6px 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.header .header_icon li a span:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  margin-left: -5px;
+  border-top: 5px solid #3192bf;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+
+.header .header_icon li a:hover span {
+  opacity: 1;
+  top: -33px;
+}
+
+/* 전체 메뉴 */
+.nav {
+  overflow: hidden;
+  padding: 25px 0;
+  /* display: none; */
+}
+
+.nav > div {
+  float: left;
+  width: 40%;
+  background-color: yellow;
+  /* padding-right: 1px; */
+}
+
+.nav > div:last-child {
+  width: 20%;
+}
+/* ㄴ마지막 20% 줘야지 전체div 100% 맞음 */
+
+.nav > div ol {
+  overflow: hidden;
+}
+
+/* ㄱ카테고리 2등분 하기 */
+.nav > div li {
+  float: left;
+  width: 50%;
+  position: relative;
+  padding-left: 8px;
+  box-sizing: border-box;
+}
+
+/* ㄱ마지막껀 2등분으로 나눠지면 안되니까 */
+.nav > div:last-child li {
+  width: 100%;
+}
+
+/* ㄱ가상요소 사용해서 리스트 앞 쩜 주기 */
+.nav > div li:before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  background-color: black;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+
+.nav > div h3 {
+  font-size: 18px;
+  color: tomato;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/* 컨텐츠 영역 */
+.column {
+  padding: 15px;
+  border-bottom: 1px solid blue;
+}
+
+.column .col_tit {
+  font-size: 20px;
+  color: blue;
+  padding-bottom: 5px;
+}
+
+.column .col_desc {
+  border-bottom: 1px dashed blue;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  color: skyblue;
+  line-height: 18px;
+}
+
+.column.coll1 {
+  background-color: yellow;
+}
+.column.coll2 {
+  background-color: red;
+}
+.column.coll3 {
+  border-bottom: 0;
+  /* 얘는 보더 없애야 하니까 */
+  background-color: wheat;
+}
+.column.coll4 {
+}
+.column.coll5 {
+}
+.column.coll6 {
+  border-bottom: 0;
+  /* 얘는 보더 없애야 하니까 */
+}
+.column.coll7 {
+}
+.column.coll8 {
+}
+.column.coll9 {
+  border-bottom: 0;
+  /* 얘는 보더 없애야 하니까 */
+}
+
+/* 게시판1 */
+.notice1 {
+  position: relative;
+}
+.notice1 h5 {
+  font-size: 14px;
+  color: violet;
+  padding-bottom: 5px;
+}
+.notice1 li {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 5px;
+}
+/* ㄴ한줄효과 */
+
+.notice1 li::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: yellowgreen;
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+/* ㄴ쩜 가상요소 */
+
+.notice1 .more {
+  position: absolute;
+  right: 0;
+  top: 3px;
+  color: yellowgreen;
+  text-transform: uppercase;
+}
+
+/* _________________________//게시판1 */
+.notice2 {
+  position: relative;
+}
+.notice2 h5 {
+  font-size: 14px;
+  color: violet;
+  padding-bottom: 5px;
+}
+.notice2 li {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  padding-left: 8px;
+  padding-bottom: 15px;
+  max-height: 40px;
+  /* ㄴie 익스플로어 땜에 맥스하잇 값 잡아준다 */
+}
+/* ㄴ두줄효과 */
+
+.notice2 li::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: yellowgreen;
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+/* ㄴ쩜 가상요소 */
+
+.notice2 .more {
+  position: absolute;
+  right: 0;
+  top: 3px;
+  color: yellowgreen;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+/* ____________________________//게시판2 */
+
+/* mediaquery */
+/* 화면너비 0 ~ 1220px */
+@media (max-width: 1220px) {
+  .container {
+    width: 100%;
+  }
+  .row {
+    padding: 0 15px;
+  }
+  #contents .container {
+    border: 0;
+  }
+}
+
+/* 메뉴 */
+.menu {
+}
+.menu li {
+  position: relative;
+}
+.menu li a {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #257fac;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  display: block;
+  transition: box-shadow 0.34s ease, background 0.34s ease;
+}
+
+.menu li a i {
+  position: absolute;
+  /* left: 200px; */
+  right: 10px;
+}
+
+.menu li a:hover {
+  box-shadow: inset 180px 0 0 0 rgba(36, 130, 174, 0.7);
+  color: #fff;
+  background: rgba(36, 130, 174, 0.9);
+}
+
+/* 게시판2 */
+
+/* 화면너비 0 ~ 1042px */
+@media (max-width: 1024px) {
+}
+
+/* 화면너비 0 ~ 960px */
+@media (max-width: 960px) {
+  #cont_right {
+    position: static;
+    width: 100%;
+    border-top: 1px solid blue;
+  }
+  #cont_center {
+    margin-right: 0;
+    border-right: 0;
+  }
+
+  .nav > div {
+    float: none;
+    width: 100%;
+  }
+  .nav > div:last-child {
+    width: 100%;
+  }
+  .nav > div li {
+    width: 33.33333%;
+  }
+  .nav > div:last-child li {
+    width: 33.3333%;
+  }
+  .nav > div ol {
+    margin-bottom: 10px;
+  }
+}
+
+/* 화면너비 0 ~ 768px */
+@media (max-width: 768px) {
+  #cont_left {
+    float: none;
+    width: 100%;
+  }
+
+  #cont_center {
+    border-left: 0;
+  }
+
+  .container {
+    width: 100%;
+  }
+  .row {
+    padding: 0 15px;
+  }
+}
+
+/* 화면너비 0 ~ 680px */
+@media (max-width: 680px) {
+  .nav > div li {
+    width: 50%;
+  }
+  .nav > div:last-child li {
+    width: 50%;
+  }
+}
+
+/* 화면너비 0 ~ 600px */
+@media (max-width: 600px) {
+  .nav > div li {
+    width: 100%;
+  }
+  .nav > div:last-child li {
+    width: 100%;
+  }
+
+  .header {
+    height: auto;
+  }
+  /* ㄴ헤더 height 값 없애려면 auto */
+  .header .header_tit {
+    display: none;
+  }
+  .header .header_tit {
+    display: none;
+  }
+  /* 600 되면 헤더 타이틀 들 다 사라지게 하기 */
+
+  .column.coll1 .col_tit {
+    display: none;
+  }
+  .column.coll1 .col_desc {
+    display: none;
+  }
+  .column.coll1 {
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  .column.coll1 .menu ul {
+    overflow: hidden;
+  }
+
+  .column.coll1 .menu li {
+    float: left;
+    width: 33.3333%;
+    text-align: center;
+    border-right: 1px solid wheat;
+    box-sizing: border-box;
+  }
+
+  .column.coll1 .menu li:nth-child(3n) {
+    border-right: 0;
+  }
+
+  .column.coll1 .menu li a {
+    color: wheat;
+  }
+
+  .column.coll1 .menu li a i {
+    display: none;
+  }
+}

@@ -1,0 +1,27 @@
+.container {
+  margin: 0 auto;
+  width: 90%;
+  text-align: center;
+  background-color: yellow;
+}
+
+.menu {
+  display: inline-flex;
+}
+
+.menu-link {
+  margin: 5px;
+  list-style: none;
+  text-decoration: none;
+  background-color: white;
+  padding: 6px;
+  color: black;
+}
+
+.menu-active {
+  background-color: blue;
+}
+
+.menu-practice {
+  background-color: green;
+}

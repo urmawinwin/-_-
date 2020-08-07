@@ -1,0 +1,125 @@
+/* ____________________배너 */
+
+.banner_menu {
+  position: absolute;
+  left: 0;
+  top: 100px;
+  /* 밑에 메뉴 float 주니까 -> overflow:hidden */
+  overflow: hidden;
+  /* ★★ */
+  /* 여기 width 값 안주면, 밑에 메뉴 float:right 줘도 안먹힘 */
+  width: 100%;
+  height: 100%;
+  /* ★슬라이더 때문에 menu 가려지니까, z-index 로 끌올 */
+  /* z-index: 10; */
+}
+
+.banner_menu a {
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.banner_menu a:hover {
+  color: saddlebrown;
+}
+
+.banner_menu .bm_left {
+  float: left;
+}
+
+.banner_menu .bm_left ul {
+  /* 메뉴 글자 내려주기 */
+  padding-top: 7px;
+}
+
+.banner_menu .bm_left li {
+  /* 
+      float 으로 가로 정렬 안하는 이유!
+       글씨니까, inline 써서 여백이 생겨도 갠춘
+      */
+  display: inline;
+  margin-right: 30px;
+  /* 
+      li 에 가상요소 줬으니까
+      li 에 position:relative;
+      이걸 해줘야 li 옆에 가상요소 세로줄 이 생김
+      */
+  position: relative;
+}
+
+.banner_menu .bm_left ul .total {
+  margin-right: 20px;
+}
+
+.banner_menu .bm_left ul .total a {
+  font-size: 14px;
+  padding: 3px 10px;
+  display: inline-block;
+  border: 1px solid white;
+  transition: all 0.7s;
+}
+
+.banner_menu .bm_left ul .total a:hover {
+  background-color: royalblue;
+  border-color: wheat;
+}
+
+/* bm_right */
+
+.banner_menu .bm_right {
+  float: right;
+  overflow: hidden;
+}
+
+.banner_menu .bm_right ul {
+  float: left;
+}
+
+.banner_menu .bm_right ul:first-child {
+  /* 메뉴 글자 내려주기 */
+  padding-top: 7px;
+}
+
+.banner_menu .bm_right li {
+  display: inline;
+  text-align: center;
+  margin-right: 20px;
+  /* 
+      li 에 가상요소 줬으니까
+      li 에 position:relative;
+      이걸 해줘야 li 옆에 가상요소 세로줄 이 생김
+      */
+  position: relative;
+}
+
+.banner_menu .bm_right li.line {
+  margin-right: 30px;
+}
+
+.banner_menu .bm_right li.white {
+  margin-right: 10px;
+}
+
+.banner_menu .bm_right li.white a {
+  width: 80px;
+  /* height: 50px; */
+  background-color: black;
+  padding: 7px 30px 9px 30px;
+  border: 1px solid red;
+  display: inline-block;
+}
+
+.banner_menu li.line::after {
+  /* 
+      li 에 가상요소 줬으니까
+      li 에 기준점이 필요해    
+      */
+  content: "";
+  width: 3px;
+  height: 20px;
+  background: red;
+  position: absolute;
+  right: -18px;
+  top: 2px;
+}

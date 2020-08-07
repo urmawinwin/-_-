@@ -1,0 +1,196 @@
+/* 레이아웃 */
+#header {
+  background: url(../img/header_bg.jpg) repeat-x center top;
+}
+
+/* 컨테이너 */
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* 헤더 */
+.header {
+  height: 327px;
+}
+
+.header .header_menu {
+  text-align: right;
+}
+
+.header .header_menu a {
+  color: #fff;
+  padding: 8px 0 6px 10px;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+.header .header_menu a:hover {
+  color: #ccc;
+}
+
+.header .header_tit {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 55px;
+}
+
+.header .header_tit h1 {
+  font-size: 30px;
+  color: #fff;
+  background-color: blue;
+  display: inline-block;
+  padding: 5px 30px 5px 30px;
+  letter-spacing: 2px;
+  font-weight: 900;
+  transition: box-shadow 0.25s ease-in-out;
+}
+
+.header .header_tit h1:hover {
+  box-shadow: inset -9em 0 0 0 #257fac, inset 9em 0 0 0 #257fac;
+}
+
+.header .header_tit a {
+  font-size: 16px;
+  color: brown;
+  background: cadetblue;
+  display: inline-block;
+  padding: 10px 20px 10px 20px;
+  margin-top: 10px;
+  transition: box-shadow 0.25s ease-in-out;
+  /* ㄴ마우스 올렸을때 부드러운 효과 주고프면  */
+}
+
+.header .header_tit a:hover {
+  box-shadow: 0 0 0 5px rgba(75, 154, 191, 0.9) inset,
+    0 0 0 100px rgba(0, 0, 0, 0.1) inset;
+}
+
+.header .header_icon {
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 45px;
+}
+
+.header .header_icon li {
+  display: inline;
+  margin: 0 2px;
+}
+
+.header .header_icon li a {
+  background-color: rgba(75, 154, 191, 0.9);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  /* ㄴa는 inline 구조니까 위드/하잇 값 안먹혀 */
+  /* ㄴ그래서 블럭 구조로 바꿔주고 */
+  display: inline-block;
+  font-size: 35px;
+  line-height: 60px;
+  position: relative;
+}
+
+.header .header_icon li a span {
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  transform: translateX(-50%);
+  font-size: 12px;
+  line-height: 1.6;
+  background-color: salmon;
+  padding: 3px 9px;
+  border-radius: 6px 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.header .header_icon li a span:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  margin-left: -5px;
+  border-top: 5px solid #3192bf;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+
+.header .header_icon li a:hover span {
+  opacity: 1;
+  top: -33px;
+}
+
+/* 전체 메뉴 */
+/* #nav {
+  width: 1200px;
+  margin: 0 auto;
+  height: 180px;
+  background-color: tomato;
+} */
+
+#nav {
+  background-color: tomato;
+  padding: 45px 0;
+  position: relative;
+}
+
+.nav_container {
+  /* margin: 30px; */
+  display: flex;
+  justify-content: space-between;
+  /* flex-direction: row; */
+  max-width: 1200px;
+  /* max-width: 80%; */
+  margin: 0 auto;
+  /* height: 180px; */
+  /* height: 80px; */
+  /* border: 1px red solid; */
+  background-color: turquoise;
+  /* padding: 15px; */
+  /* margin: 15px 0; */
+}
+
+#nav > h2 {
+  position: absolute;
+  left: 250px;
+  top: 23px;
+}
+
+.nav > h3 {
+  font-weight: bold;
+}
+
+ul > li > a {
+  vertical-align: baseline;
+}
+
+/* ㄱ가상요소 사용해서 리스트 앞 쩜 주기 */
+.nav > div li:before {
+  content: "";
+  width: 5px;
+  height: 3px;
+  /* background-color: black; */
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+
+.nav > div h3 {
+  font-size: 18px;
+  color: tomato;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/* mediaquery */
+@media (max-width: 1220px) {
+  .container {
+    width: 100%;
+  }
+  .row {
+    padding: 0 15px;
+  }
+}
